@@ -34,37 +34,36 @@ El **alcance** del proyecto incluye la medición de parámetros clave en puntos 
 
 A continuación se describe la topología lógica del sistema, representando el flujo de datos desde los sensores hasta el usuario final:
 
-```mermaid
 flowchart TD
-    subgraph Nodo Sensor Remoto
-        Sensor1[Sensor pH / TDS / Turbidez / Temp]
+    subgraph Nodo_Sensor_Remoto
+        Sensor1[Sensor: pH, TDS, Turbidez, Temp]
         ESP32_Node1[LILYGO ESP32 + LoRa]
         Sensor1 --> ESP32_Node1
     end
 
-    subgraph Estación Receptora
-        LoRa_Receptor[LILYGO ESP32 LoRa]
-        Local_ESP32[ESP32 + GPRS]
+    subgraph Estacion_Receptora
+        LoRa_Receptor[LILYGO ESP32 (LoRa)]
+        Local_ESP32[ESP32 (GPRS)]
         LoRa_Receptor -->|ESP-NOW| Local_ESP32
     end
 
-    subgraph Red Celular
+    subgraph Red_Celular
         GPRS_Module[SIM7000G]
         Local_ESP32 -->|GPRS| GPRS_Module
     end
 
-    subgraph Servidor IoT
-        MQTT[Broker MQTT - Mosquitto]
+    subgraph Servidor_IoT
+        MQTT[MQTT - Mosquitto]
         NodeRED[Node-RED]
         DB[InfluxDB]
-        Grafana[Dashboard - Grafana]
+        Grafana[Grafana Dashboard]
         GPRS_Module --> MQTT
         MQTT --> NodeRED
         NodeRED --> DB
         DB --> Grafana
     end
 
-    subgraph Usuario Final
-        Usuario[Web (PC/Smartphone)]
+    subgraph Usuario_Final
+        Usuario[Web - PC o Smartphone]
         Grafana --> Usuario
     end
