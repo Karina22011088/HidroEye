@@ -21,7 +21,7 @@ El **alcance** del proyecto incluye la medición de parámetros clave en puntos 
   - **ESP-NOW (WiFi)** para comunicación punto a punto entre dispositivos locales
   - **GPRS** para el envío de datos hacia el servidor IoT a través de redes móviles
 
-- **Servidor IoT** (Orange Pi o Raspberry Pi con IoTStack):
+- **Servidor IoT** (Raspberry Pi con IoTStack):
   - **Mosquitto** (broker MQTT)
   - **Node-RED** (procesamiento de datos)
   - **InfluxDB** (base de datos de series temporales)
@@ -29,7 +29,7 @@ El **alcance** del proyecto incluye la medición de parámetros clave en puntos 
 
 - **Visualización**:
   - Dashboards dinámicos en **Grafana** accesibles por navegador web
-  
+
 ## Diagrama de topología lógica del sistema
 
 La topología lógica del proyecto **HidroEye** está compuesta por varias secciones interconectadas que permiten el flujo continuo de datos desde el campo hasta la visualización en tiempo real por parte del usuario. A continuación se describe el recorrido de la información y cómo interactúan los componentes:
@@ -44,7 +44,7 @@ La topología lógica del proyecto **HidroEye** está compuesta por varias secci
    Una vez que los datos llegan a la estación con GPRS, se envían a través de la red móvil al servidor central. Esta comunicación permite transmitir información desde zonas rurales sin necesidad de infraestructura de red fija.
 
 4. **Servidor IoT**  
-   Ubicado en una **Raspberry Pi** o **Orange Pi**, este servidor ejecuta una pila de herramientas IoT:
+   Ubicado en una **Raspberry Pi**, este servidor ejecuta una pila de herramientas IoT:
    - **Mosquitto (MQTT)** para recibir los datos de forma eficiente.
    - **Node-RED** para procesar, filtrar y redirigir la información.
    - **InfluxDB** para almacenar los datos en series temporales.
