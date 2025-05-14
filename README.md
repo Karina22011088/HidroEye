@@ -29,41 +29,33 @@ El **alcance** del proyecto incluye la medición de parámetros clave en puntos 
 
 - **Visualización**:
   - Dashboards dinámicos en **Grafana** accesibles por navegador web
-
+  
 ## Diagrama de topología lógica del sistema
 
-A continuación se describe la topología lógica del sistema, representando el flujo de datos desde los sensores hasta el usuario final:
+La topología lógica del proyecto **HidroEye** está compuesta por varias secciones interconectadas que permiten el flujo continuo de datos desde el campo hasta la visualización en tiempo real por parte del usuario. A continuación se describe el recorrido de la información y cómo interactúan los componentes:
 
-flowchart TD
-    subgraph Nodo_Sensor_Remoto
-        Sensor1[Sensor: pH, TDS, Turbidez, Temp]
-        ESP32_Node1[LILYGO ESP32 + LoRa]
-        Sensor1 --> ESP32_Node1
-    end
+1. **Nodos sensores remotos**  
+   Son estaciones instaladas cerca de canales o puntos de riego. Cada nodo cuenta con sensores para medir parámetros fisicoquímicos del agua como pH, turbidez, TDS y temperatura. Estos sensores están conectados a una placa **LILYGO ESP32** con capacidad **LoRa**, encargada de recolectar los datos y transmitirlos inalámbricamente.
 
-    subgraph Estacion_Receptora
-        LoRa_Receptor[LILYGO ESP32 (LoRa)]
-        Local_ESP32[ESP32 (GPRS)]
-        LoRa_Receptor -->|ESP-NOW| Local_ESP32
-    end
+2. **Estación receptora**  
+   Se encuentra dentro del área de cobertura LoRa de los nodos remotos. Esta estación recibe los datos mediante **LoRa** y los transfiere a otro microcontrolador ESP32 con módulo **GPRS**, utilizando comunicación **ESP-NOW**. La separación entre recepción y transmisión permite modular la arquitectura.
 
-    subgraph Red_Celular
-        GPRS_Module[SIM7000G]
-        Local_ESP32 -->|GPRS| GPRS_Module
-    end
+3. **Red celular (GPRS)**  
+   Una vez que los datos llegan a la estación con GPRS, se envían a través de la red móvil al servidor central. Esta comunicación permite transmitir información desde zonas rurales sin necesidad de infraestructura de red fija.
 
-    subgraph Servidor_IoT
-        MQTT[MQTT - Mosquitto]
-        NodeRED[Node-RED]
-        DB[InfluxDB]
-        Grafana[Grafana Dashboard]
-        GPRS_Module --> MQTT
-        MQTT --> NodeRED
-        NodeRED --> DB
-        DB --> Grafana
-    end
+4. **Servidor IoT**  
+   Ubicado en una **Raspberry Pi** o **Orange Pi**, este servidor ejecuta una pila de herramientas IoT:
+   - **Mosquitto (MQTT)** para recibir los datos de forma eficiente.
+   - **Node-RED** para procesar, filtrar y redirigir la información.
+   - **InfluxDB** para almacenar los datos en series temporales.
+   - **Grafana** para construir dashboards de visualización.
 
-    subgraph Usuario_Final
-        Usuario[Web - PC o Smartphone]
-        Grafana --> Usuario
-    end
+5. **Usuario final**  
+   Técnicos, agricultores o autoridades pueden acceder a los dashboards desde navegadores web, ya sea en computadoras o teléfonos inteligentes, para visualizar los niveles de calidad del agua en tiempo real y tomar decisiones informadas.
+
+---
+
+**Flujo general de información:**  
+_Sensores → ESP32 con LoRa → Estación receptora → ESP32 con GPRS → Red celular → Servidor IoT (MQTT → Node-RED → InfluxDB → Grafana) → Usuario final._
+
+Este diseño modular y escalable permite implementar múltiples nodos sensores en distintas ubicaciones, mantener eficiencia energética en campo y garantizar una interfaz de consulta centralizada para los usuarios.
