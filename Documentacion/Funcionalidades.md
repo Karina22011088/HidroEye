@@ -5,12 +5,12 @@ El software del sistema HidroEye cumple con múltiples funcionalidades distribui
 ### Principales funcionalidades:
 
 - **Adquisición de datos en campo**
-  - Lectura de sensores (pH, TDS, turbidez, temperatura) mediante pines analógicos/digitales en el **ESP32 LoRa**.
+  - Lectura de sensores (pH, turbidez, temperatura) mediante pines analógicos/digitales en el **ESP32 LoRa**.
   - Conversión y normalización de señales para empaquetado eficiente.
 
 - **Transmisión de datos**
   - Envío vía **LoRa** desde los nodos sensores al nodo receptor.
-  - Comunicación entre ESP32 receptor y ESP32 con GPRS vía **ESP-NOW**.
+  - Comunicación entre **LoRa** receptor y **LILYGO T-SIM7000G** con GPRS vía **ESP-NOW**.
   - Envío de datos del campo al servidor mediante protocolo **MQTT sobre GPRS**.
 
 - **Procesamiento y almacenamiento**
@@ -19,10 +19,7 @@ El software del sistema HidroEye cumple con múltiples funcionalidades distribui
   - Almacenamiento en base de datos **InfluxDB** con series temporales.
 
 - **Visualización**
-  - Visualización de los datos históricos y en tiempo real mediante paneles dinámicos en **Grafana**.
-
-- **Monitoreo**
-  - Uso de **Zabbix** para verificar el estado de disponibilidad de nodos, conectividad GPRS y recursos del servidor.
+  - Visualización de los datos históricos mediante paneles dinámicos en **Grafana** y en tiempo real en **Node-RED**.
 
 - **Acceso multiplataforma**
-  - Consultas desde PC, tablet o smartphone a través de navegadores web seguros, sin necesidad de instalar software adicional.
+  - Consultas a la página web desde PC, tablet o smartphone a través de navegadores web seguros, sin necesidad de instalar software adicional.

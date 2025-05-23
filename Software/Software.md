@@ -14,7 +14,7 @@ A continuación se presenta la lista de lenguajes de programación, frameworks, 
   - **Node-RED** – Herramienta de programación visual para el procesamiento de datos recibidos por MQTT.
   - **Grafana** – Plataforma de visualización de datos en tiempo real mediante dashboards personalizados.
   - **InfluxDB** – Base de datos optimizada para series temporales, utilizada para almacenar datos sensados.
-  - **EMQ (MQTT Broker)** – Broker MQTT ligero utilizado para la transmisión eficiente de datos entre dispositivos y servidor.
+  - **EMQX (MQTT Broker)** – Broker MQTT ligero utilizado para la transmisión eficiente de datos entre dispositivos y servidor.
   - **IoTStack** – Conjunto de herramientas desplegado en una Raspberry Pi que integra Mosquitto, Node-RED, InfluxDB y Grafana.
 
 - **Comunicación y protocolos:**
