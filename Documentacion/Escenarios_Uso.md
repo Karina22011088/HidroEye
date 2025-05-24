@@ -31,10 +31,10 @@ A continuación se muestran ejemplos de cómo se puede utilizar el sistema, incl
 
 ### Videos de Uso
 
-- **Video 1:** [Implementación](/Documentacion/Funcionalidad/video6.mp4)
-  - *Descripción:* Video mostrando el prototipo implementado en un entorno real.
+- **Video 1:** [Implementación](/Documentacion/Funcionalidad/video1.mp4) | [Ver en Google Drive](https://drive.google.com/file/d/1Kn8K6Ns2vyfQ3mbRSLjwOlgQvDR_f5kb/view?usp=drive_link)
+- *Descripción:* Video mostrando el prototipo implementado en un entorno real.
   
-- **Video 2:** [Monitoreo en Tiempo Real](/Documentacion/Funcionalidad/video6.mp4)
+- **Video 2:** [Monitoreo en Tiempo Real](/Documentacion/Funcionalidad/video3.mp4) | [Ver en Google Drive](https://drive.google.com/file/d/1Qfehs4prKMMh7WkSrur3A0me1xghpkV0/view?usp=drive_link)
   - *Descripción:* Video demostrando cómo se visualizan los datos en tiempo real en la pantalla OLED, mostrando la Lora receptora y la Lilygo en funcionamiento.
 
 ### Conclusión
