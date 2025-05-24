@@ -21,12 +21,12 @@ A continuación se muestran ejemplos de cómo se puede utilizar el sistema, incl
 
 ### 4. Interfaz de Node-RED
 
-<img src="/Documentacion/Funcionalidad/node.jpg" alt="Datos Node-RED" width="300" />
+<img src="/Documentacion/Funcionalidad/node.jpg" alt="Datos Node-RED" width="600" />
 *Descripción:* Visualización de datos históricos en Node-Red, mostrando tendencias en temperatura, turbidez y pH.
 
 ### 5. Revisión de Datos Históricos
 
-<img src="/Documentacion/Funcionalidad/grafana.jpg" alt="Datos Históricos" width="300" />
+<img src="/Documentacion/Funcionalidad/grafana.jpg" alt="Datos Históricos" width="600" />
 *Descripción:* Ejemplo de datos históricos almacenados en la base de datos InfluxDB, accesibles a través de Grafana.
 
 ### Videos de Uso
